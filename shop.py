@@ -55,8 +55,9 @@ def product():
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-    username= request.form.get('username')    
-    user = User.query.filter_by(username=username).first()
+    username= request.form.get('username')
+    password= request.form.get('password')    
+    user = User.query.filter_by(username=username,password=password).first()
     if user:
         login_user(user)
         return redirect(url_for('index'))       

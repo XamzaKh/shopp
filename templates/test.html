@@ -1,0 +1,5 @@
+{% for product in products %}
+    {{ product.title }}
+    {{ product.image }}
+    <img src='{{ url_for("static", filename="images/" + product.image) }}' alt="">
+{% endfor %}    

@@ -131,81 +131,19 @@
 				<div class="col">
 					
 					<div class="product_grid">
-
-						<!-- Product -->
+						{% for product in products %}
 						<div class="product">
-							<div class="product_image"><img src="{{ url_for('static', filename='images/product_1.jpg') }}" alt=""></div>
-							<div class="product_extra product_new"><a href="categories.html">Новинка</a></div>
+							<div class="product_image"><img src='{{ url_for("static", filename="images/" + product.image) }}' alt=""></div>
+
+							<div class="product_extra product_new">
+								<a>{{ product.category }}</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">iPhone 12 Pro</a></div>
-								<div class="product_price">120 000р.</div>
+								<div class="product_title"><a href="product.html">{{ product.title }}</a></div>
+								<div class="product_price">{{ product.price }} Р</div>
 							</div>
 						</div>
+						{% endfor %}
 
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="{{ url_for('static', filename='images/product_2.jpg') }}" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Скидка</a></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Умная калонка</a></div>
-								<div class="product_price">7 000р.</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="{{ url_for('static', filename='images/product_3.jpg') }}" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Usb зарядник</a></div>
-								<div class="product_price">800р.</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="{{ url_for('static', filename='images/product_4.jpg') }}" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Ноутбук</a></div>
-								<div class="product_price">43 000р.</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="{{ url_for('static', filename='images/product_5.jpg') }}" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Наушники</a></div>
-								<div class="product_price">8 500р.</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="{{ url_for('static', filename='images/product_6.jpg') }}" alt=""></div>
-							<div class="product_extra product_hot"><a href="categories.html">Горячее</a></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Планшет</a></div>
-								<div class="product_price">16 000р.</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="{{ url_for('static', filename='images/product_7.jpg') }}" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Samsung S21</a></div>
-								<div class="product_price">90 000р.</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="{{ url_for('static', filename='images/product_8.jpg') }}" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Горячее</a></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Клавиатура</a></div>
-								<div class="product_price">7 800р.</div>
-							</div>
 						</div>
 
 					</div>

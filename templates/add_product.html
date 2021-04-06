@@ -4,19 +4,59 @@
 
 <h1>Добавить товар</h1>  
 
-<h1>Добавить товар</h1> 
-<h1>Добавить товар</h1> 
-<form action="" method='POST' enctype="multipart/form-data">
-    <input type="text" name='title'>
-    <input type="text" name='body'>
-    <input type="number" min="1" name='price'>
-    <input type="text" name='category'>
-    <input type="text" name='availability'>
-    <input type="image" name='image'>
+<h1>Добавить товар</h1>  
+<!-- <form action="" method='POST' enctype="multipart/form-data">
+    <input type="text" name='title'><br>
+    <input type="text" name='body'><br>
+    <input type="number" min="1" name='price'><br>
+    <input type="text" name='category'><br>
+    <input type="text" name='availability'><br>
+    <input type="image" name='image'><br>
     <button>Добавить товар!</button>
 
-</form>   
+</form>    -->
+<body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <h5 class="card-title text-center">Заполните данные товара</h5>
+              <form class="form-signin" action="" method='POST' enctype="multipart/form-data">
+                <div class="form-label-group">
+                    <input type="text" name='title' class="form-control">
+                    <label>Название товара</label>
+                </div> 
+                <div class="form-label-group">
+                    <input type="text" name='body' class="form-control">
+                    <label>Описание товара</label>
+                </div>
+                <div class="form-label-group">
+                    <input type="number" min="1" name='price' class="form-control">
+                    <label>Цена</label>
+                </div>
+                <div class="form-label-group">
+                    <input type="text" name='category' class="form-control">
+                    <label>Категория товара</label>
+                </div>
+                <div class="form-label-group">
+                    <input type="text" name='availability' class="form-control">
+                    <label>Наличие товара</label>
+                </div>             
+                <div class="form-label-group">
+                    <input type="file" name='image' class="form-control">
+                    <label>Добавить изображение</label>
+                  </div> 
 
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Добавить товар</button>
+                <hr class="my-4">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 
 
 {% endblock %}

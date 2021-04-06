@@ -1,14 +1,21 @@
 from flask import Flask, render_template, redirect, url_for, request
+import secrets
+import os
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.utils import secure_filename
 from flask_login import LoginManager, login_user, current_user, UserMixin
 
+
+ALLOWED_EXTENSIONs = {'png', 'jpg', 'jpeg'}
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///electro_shop.db'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config['SECRET_KEY'] = 'dawkdjhfio213lasd131ldajsfko17gf'
+app.config['UPLOAD_FOLDER'] = 'static/images'
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
+
 
 
 
@@ -40,12 +47,11 @@ class Product(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    product = Product.query.all()
+    return render_template('index.html', products=product)
 
 
-@app.route('/categories')
-def categories():
-    return render_template('categories.html')
+
 
 @app.route('/product')
 def product():
@@ -70,7 +76,22 @@ def register():
 
 @app.route('/add_product', methods=['GET', 'POST'])
 def add_product():
+    if current_user.is_anonymous:
+        return redirect(url_for('index'))
+    if request.method == 'POST':
+        file_name = request.files.get('image')    
+        filename = secure_filename(file_name.filename)
+        file_name.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) 
+        product = Product(title=request.form.get('title'), body=request.form.get('body'), price=request.form.get('price'), category=request.form.get('category'),
+        availability=request.form.get('availability'), image=filename)
+        db.session.add(product)
+        db.session.commit()    
     return render_template('add_product.html')
+
+@app.route('/test')
+def test():
+    product = Product.query.all()
+    return render_template('test.html', products=product)   
 
 if __name__ == '__main__':
     app.run(debug=True)   

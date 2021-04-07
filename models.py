@@ -9,6 +9,16 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
+class Orders(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    username = db.Column(db.String(), nullable=False)
+    address = db.Column(db.String(), nullable=False)
+    email = db.Column(db.String(), nullable=False)
+    def __repr__(self): 
+        return self.username  
+
+
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     username = db.Column(db.String(), nullable=False)

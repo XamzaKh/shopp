@@ -24,6 +24,16 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
+class Orders(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    username = db.Column(db.String(), nullable=False)
+    address = db.Column(db.String(), nullable=False)
+    email = db.Column(db.String(), nullable=False)
+    def __repr__(self): 
+        return self.username 
+
+
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     username = db.Column(db.String(), nullable=False)
@@ -53,10 +63,6 @@ def index():
 
 
 
-@app.route('/product')
-def product():
-    return render_template('product.html')
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -70,8 +76,12 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/register')
+@app.route('/register', methods=['GET','POST'])
 def register():
+    if request.method == 'POST':
+        user = User(username=request.form.get('username'), password=request.form.get('password')) 
+        db.session.add(user)
+        db.session.commit() 
     return render_template('register.html')
 
 @app.route('/add_product', methods=['GET', 'POST'])
@@ -88,10 +98,24 @@ def add_product():
         db.session.commit()    
     return render_template('add_product.html')
 
-@app.route('/test')
-def test():
+@app.route('/product/<int:products_id>')
+def product(products_id):
     product = Product.query.all()
-    return render_template('test.html', products=product)   
+    return render_template('product.html', products=product)   
+
+
+@app.route('/buy', methods=['GET', 'POST'])
+def buy():
+    if request.method == 'POST':
+        order = Orders(username=request.form.get('username'), address=request.form.get('address'), email=request.form.get('email')) 
+        db.session.add(order)
+        db.session.commit() 
+    return render_template('buy.html')
+
+@app.route('/order', methods=['GET', 'POST'])
+def order():
+    order = Orders.query.all()
+    return render_template('order.html', orders=order)
 
 if __name__ == '__main__':
     app.run(debug=True)   

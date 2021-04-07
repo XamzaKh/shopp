@@ -12,8 +12,6 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/OwlCarousel2-2.2.1/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/responsive.css') }}">
-	<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='static/styles/categories.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='static/styles/categories_responsive.css') }}"> -->
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/contact.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/contact_responsive.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/product.css') }}">
@@ -30,11 +28,11 @@
 							<nav class="main_nav">
 								<ul>
 									<li><a href="{{ url_for('index') }}">Главная</a></li>				
-									<li><a href="{{ url_for('categories') }}">Категории</a></li>
 									<li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Вход</a></li>
 									<li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Регистрация</a></li>
 									{% if current_user.is_authenticated %}
 										<li class="nav-item"><a class="nav-link" href="{{ url_for('add_product') }}">Добавить товар</a></li>
+										<li class="nav-item"><a class="nav-link" href="{{ url_for('order') }}">Покупки</a></li>
 									{% endif %}	
 								</ul>
 								</div>
@@ -53,12 +51,7 @@
                         <li>
                             <a href="{{ url_for('index') }}">Главная<i class="fa fa-angle-down"></i></a>
                         </li>
-                        <li class="page_menu_item has-children menu_mm">
-                            <a href="{{ url_for('categories') }}">Категории<i class="fa fa-angle-down"></i></a>
-                        </li>
-						<!-- <li>
-                            <a href="{{ url_for('add_product') }}">Добавить товар<i class="fa fa-angle-down"></i></a>
-						</li> -->
+
                     </ul>
                 </div>
             </div>

@@ -116,7 +116,6 @@
 					<div class="avds_large_content">
 						<div class="avds_title">Профессиональные Камеры</div>
 						<div class="avds_text">Камеры для работы, хобби и развлечения.</div>
-						<div class="avds_link avds_link_large"><a href="categories.html">Смотреть больше</a></div>
 					</div>
 				</div>
 			</div>
@@ -138,7 +137,7 @@
 							<div class="product_extra product_new">
 								<a>{{ product.category }}</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">{{ product.title }}</a></div>
+								<div class="product_title"><a href="{{ url_for('product', products_id=product.id) }}">{{ product.title }}</a></div>
 								<div class="product_price">{{ product.price }} Р</div>
 							</div>
 						</div>
@@ -164,7 +163,6 @@
 						<div class="avds_xl_content">
 							<div class="avds_title">Популярное</div>
 							<div class="avds_text">Наушники от Sennheiser.Громкое и чистое звучание.</div>
-							<div class="avds_link avds_xl_link"><a href="categories.html">Смотреть больше</a></div>
 						</div>
 					</div>
 				</div>

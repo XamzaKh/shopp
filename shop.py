@@ -104,7 +104,6 @@ def add_product():
 def product(product_id):
     product = Product.query.get(product_id)
     print(product)
-    # product = Product.query.all()
     return render_template('product.html', product=product)   
 
 

@@ -3,4 +3,3 @@ env/
 __pycache__/
 aroma/
 electro_shop.db
-create.py

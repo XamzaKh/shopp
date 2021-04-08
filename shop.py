@@ -103,8 +103,9 @@ def add_product():
 @app.route('/product/<int:product_id>')
 def product(product_id):
     product = Product.query.get(product_id)
+    print(product)
     # product = Product.query.all()
-    return render_template('product.html', products=product)   
+    return render_template('product.html', product=product)   
 
 
 @app.route('/buy', methods=['GET', 'POST'])

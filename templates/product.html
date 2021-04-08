@@ -4,13 +4,16 @@
 {% extends 'bace.html'%}
 {% block content %}
 
+
+
+
 <body>
     <h1>Login / Register</h1>
     <div class="product_details">
 		<div class="container">
             <div class="row details_row">
                 <div class="col-lg-6">
-                    {% for product in products %}
+                    <!-- {% for product in products %} -->
                     <div class="details_image">
                    
                     <body>
@@ -24,9 +27,8 @@
                         <div class="details_content">
                             <h5></h5>
                             <div class="details_name">{{ product.title }}</div>
-                            <div class="details_price">{{ product.price }}</div>
+                            <div class="details_price">{{ product.price }} ₽</div>
     
-                            <!-- In Stock -->
                             <div class="in_stock_container">
                                 <div class="availability">{{ product.availability }}</div>
                                 <span>В наличии</span>
@@ -35,14 +37,13 @@
                                 <p>{{ product.body }}</p>
                             </div>
     
-                            <!-- Product Quantity -->
                             <div class="product_quantity_container">
                                 <div class="button cart_button"><a href="{{ url_for('buy') }}">Купить сейчас</a></div>
                             </div>
                             <h5></h5>
                         </div>
                     </div>
-                {% endfor %} 
+                <!-- {% endfor %}  -->
                 <div class="details_share">
                     <span>Share:</span>
                     <ul>

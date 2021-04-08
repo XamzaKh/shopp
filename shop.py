@@ -2,6 +2,8 @@ from flask import Flask, render_template, redirect, url_for, request
 import secrets
 import os
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session ,sessionmaker, scoped_session
 from werkzeug.utils import secure_filename
 from flask_login import LoginManager, login_user, current_user, UserMixin
 
@@ -98,9 +100,10 @@ def add_product():
         db.session.commit()    
     return render_template('add_product.html')
 
-@app.route('/product/<int:products_id>')
-def product(products_id):
-    product = Product.query.all()
+@app.route('/product/<int:product_id>')
+def product(product_id):
+    product = Product.query.get(product_id)
+    # product = Product.query.all()
     return render_template('product.html', products=product)   
 
 

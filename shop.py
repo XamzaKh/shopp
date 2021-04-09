@@ -3,7 +3,6 @@ import secrets
 import os
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session ,sessionmaker, scoped_session
 from werkzeug.utils import secure_filename
 from flask_login import LoginManager, login_user, current_user, UserMixin
 
